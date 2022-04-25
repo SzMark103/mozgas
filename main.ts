@@ -16,6 +16,7 @@ function Mozgás () {
         basic.pause(400)
     }
 }
+let Game_over = 0
 let pont = 0
 let Y = 2
 let X = 2
@@ -54,32 +55,58 @@ basic.forever(function () {
             Alma_x = randint(0, 4)
             Alma_y = randint(0, 4)
         }
+        if (szörny_x == X && szörny_y == Y) {
+            Game_over = 1
+            basic.clearScreen()
+            szörny_x = 7
+            szörny_y = 7
+            basic.clearScreen()
+            music.playMelody("C5 G E C C5 C - - ", 120)
+            basic.showNumber(pont)
+            basic.pause(5000)
+            control.reset()
+        }
     }
 })
 basic.forever(function () {
     if (lépés == 1) {
-        basic.clearScreen()
-        led.plot(X, Y)
-        led.plotBrightness(Alma_x, Alma_y, 68)
-        basic.pause(400)
-    }
-})
-basic.forever(function () {
-    if (X > 4) {
-        X += -1
-    }
-    if (Y > 4) {
-        Y += -1
-    }
-    if (X < 0) {
-        X += 1
-    }
-    if (Y < 0) {
-        Y += 1
+        if (Game_over != 1) {
+            basic.clearScreen()
+            led.plotBrightness(X, Y, 193)
+            led.plotBrightness(Alma_x, Alma_y, 68)
+            led.plotBrightness(szörny_x, szörny_y, 255)
+            basic.pause(400)
+        } else {
+            basic.clearScreen()
+        }
     }
 })
 basic.forever(function () {
     if (lépés == 1) {
-        Mozgás()
+        if (Game_over != 1) {
+            if (X > 4) {
+                X += -1
+            }
+            if (Y > 4) {
+                Y += -1
+            }
+            if (X < 0) {
+                X += 1
+            }
+            if (Y < 0) {
+                Y += 1
+            }
+        } else {
+            basic.clearScreen()
+        }
+    }
+})
+basic.forever(function () {
+    if (lépés == 1) {
+        if (Game_over != 1) {
+            Mozgás()
+        } else {
+            basic.clearScreen()
+        }
     }
 })
