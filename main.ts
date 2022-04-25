@@ -16,6 +16,7 @@ function Mozgás () {
         basic.pause(400)
     }
 }
+let pont = 0
 let Y = 2
 let X = 2
 let Alma_x = 0
@@ -42,20 +43,25 @@ if (Alma_x == 2 && Alma_y == 2) {
 }
 let szörny_x = randint(0, 4)
 let szörny_y = randint(0, 4)
-if (Alma_x == 2 && Alma_y == 2) {
+if (szörny_x == 2 && szörny_y == 2) {
     szörny_x = randint(0, 4)
     szörny_y = randint(0, 4)
 }
 basic.forever(function () {
     if (lépés == 1) {
-        basic.clearScreen()
-        led.plot(X, Y)
-        basic.pause(400)
+        if (Alma_x == X && Alma_y == Y) {
+            pont += 1
+            Alma_x = randint(0, 4)
+            Alma_y = randint(0, 4)
+        }
     }
 })
 basic.forever(function () {
     if (lépés == 1) {
-    	
+        basic.clearScreen()
+        led.plot(X, Y)
+        led.plotBrightness(Alma_x, Alma_y, 154)
+        basic.pause(400)
     }
 })
 basic.forever(function () {
