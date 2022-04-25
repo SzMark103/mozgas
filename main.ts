@@ -60,7 +60,7 @@ basic.forever(function () {
     if (lépés == 1) {
         basic.clearScreen()
         led.plot(X, Y)
-        led.plotBrightness(Alma_x, Alma_y, 154)
+        led.plotBrightness(Alma_x, Alma_y, 68)
         basic.pause(400)
     }
 })
