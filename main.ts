@@ -36,7 +36,8 @@ led.plot(X, Y)
 lépés += 1
 basic.forever(function () {
     if (lépés == 1) {
-        led.toggle(X, Y)
+        basic.clearScreen()
+        led.plot(X, Y)
         basic.pause(400)
     }
 })
@@ -51,5 +52,11 @@ basic.forever(function () {
     }
     if (Y > 4) {
         Y += -1
+    }
+    if (X < 0) {
+        X += 1
+    }
+    if (Y < 0) {
+        Y += 1
     }
 })
