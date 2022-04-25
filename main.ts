@@ -34,6 +34,18 @@ basic.clearScreen()
 basic.pause(200)
 led.plot(X, Y)
 lépés += 1
+Alma_x = randint(0, 4)
+Alma_y = randint(0, 4)
+if (Alma_x == 2 && Alma_y == 2) {
+    Alma_x = randint(0, 4)
+    Alma_y = randint(0, 4)
+}
+let szörny_x = randint(0, 4)
+let szörny_y = randint(0, 4)
+if (Alma_x == 2 && Alma_y == 2) {
+    szörny_x = randint(0, 4)
+    szörny_y = randint(0, 4)
+}
 basic.forever(function () {
     if (lépés == 1) {
         basic.clearScreen()
@@ -43,7 +55,7 @@ basic.forever(function () {
 })
 basic.forever(function () {
     if (lépés == 1) {
-        Mozgás()
+    	
     }
 })
 basic.forever(function () {
@@ -58,5 +70,10 @@ basic.forever(function () {
     }
     if (Y < 0) {
         Y += 1
+    }
+})
+basic.forever(function () {
+    if (lépés == 1) {
+        Mozgás()
     }
 })
